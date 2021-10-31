@@ -1,0 +1,16 @@
+.trash {
+  overflow: hidden;
+  transition-duration: 0.8s;
+  transition-property: transform;
+}
+
+.dragging-trash {
+  transform: rotate(-25deg);
+}
+
+.dragging-create {
+  border-style: dashed;
+}
+
+
+

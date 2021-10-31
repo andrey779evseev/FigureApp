@@ -1,0 +1,23 @@
+<div
+  class="relative flex justify-center mt-4 mb-4"
+  draggable="true"
+  (dragstart)="this.isCreatedDetailDragging = true"
+  (dragend)="createdDetailDragEnded(i)"
+>
+  <app-square
+    [color]="detail.colorSquare"
+    [part]="detail.sideSquare"
+  ></app-square>
+  <div style="position:absolute; top: 2px;">
+    <app-circle
+      [color]="detail.colorCircle"
+      [part]="detail.radius"
+    ></app-circle>
+  </div>
+  <div style="position:absolute;top: 3px;">
+    <app-triangle
+      [color]="detail.colorTriangle"
+      [part]="detail.sideTriangle"
+    ></app-triangle>
+  </div>
+</div>

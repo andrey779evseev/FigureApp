@@ -1,0 +1,32 @@
+<div class="flex flex-col justify-between w-full h-full">
+  <h1 mat-dialog-title *ngIf="data.type === 'square'">Создание Квадрата</h1>
+  <h1 mat-dialog-title *ngIf="data.type === 'circle'">Создание Круга</h1>
+  <h1 mat-dialog-title *ngIf="data.type === 'triangle'">Создание Равностороннего Треугольника</h1>
+  <div mat-dialog-content>
+    <p>Введите данные</p>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Введите длину стороны равностороннего треугольника</mat-label>
+      <input matInput  type="number" [(ngModel)]="part">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Выбирите цвет</mat-label>
+      <mat-select [(value)]="color">
+        <mat-option style="color: red" value="red">Red</mat-option>
+        <mat-option style="color: blue" value="blue">Blue</mat-option>
+        <mat-option style="color: orange" value="orange">Orange</mat-option>
+        <mat-option style="color: indigo" value="indigo">Indigo</mat-option>
+        <mat-option style="color: purple" value="purple">Purple</mat-option>
+        <mat-option style="color: green" value="green">Green</mat-option>
+        <mat-option style="color: yellow" value="yellow">Yellow</mat-option>
+        <mat-option style="color: black" value="black">Black</mat-option>
+        <mat-option style="color: brown" value="brown">Brown</mat-option>
+        <mat-option style="color: gray" value="gray">Gray</mat-option>
+        <mat-option style="color: cornflowerblue" value="cornflowerblue">Cornflowerblue</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="flex justify-between">
+    <button mat-button (click)="close()">Отмена</button>
+    <button mat-button cdkFocusInitial (click)="create()">Создать</button>
+  </div>
+</div>

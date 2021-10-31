@@ -1,0 +1,36 @@
+<div class="flex flex-col justify-around items-center border-2 border-red-500 p-4 rounded">
+  <p *ngIf="type === 'square'">Корзина для Квадратов</p>
+  <p *ngIf="type === 'triangle'">Корзина для Труегольников</p>
+  <p *ngIf="type === 'circle'">Корзина для Кругов</p>
+  <div
+    draggable="true"
+    (dragstart)="this.isFigureDragging = true"
+    (dragend)="figureDragEnded()"
+    *ngIf="figures[0]"
+  >
+    <div *ngIf="type === 'triangle'">
+      <app-triangle
+        [color]="figures[0].color"
+        [part]="figures[0].part"
+      ></app-triangle>
+    </div>
+    <div *ngIf="type === 'square'">
+      <app-square
+        [color]="figures[0].color"
+        [part]="figures[0].part"
+      ></app-square>
+    </div>
+    <div *ngIf="type === 'circle'">
+      <app-circle
+        [color]="figures[0].color"
+        [part]="figures[0].part"
+      ></app-circle>
+    </div>
+  </div>
+  <div class="mt-2 flex w-full justify-between items-end">
+    <p>Кол-во: {{figures.length}}</p>
+    <button mat-mini-fab color="warn" (click)="openCreateDialog()" class="flex justify-center items-center">
+      <img src="./assets/icons/plus.svg" alt="add" width="25" height="25">
+    </button>
+  </div>
+</div>
