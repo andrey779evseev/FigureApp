@@ -19,6 +19,7 @@ export class FigureBasketComponent implements OnInit {
   @Input() isDraggingOverTheTrashDelay: boolean
   @Input() isDraggingOverCreateDelay: boolean
   @Input() step: number
+  @Input() selectedSteps: ('circle' | 'square' | 'triangle')[]
   @Output() changeStepEvent = new EventEmitter<number>()
   @Input() detail: Detail
   @Input() type: 'circle' | 'square' | 'triangle'
@@ -32,6 +33,7 @@ export class FigureBasketComponent implements OnInit {
   }
 
 
+
   openSnackCreateError() {
     this._snackBar.open('Этот обьект не вписывается в уже существующий по размеру (необходимо создать новый с меньшими размерами)', undefined, {
       duration: 3000
@@ -43,24 +45,24 @@ export class FigureBasketComponent implements OnInit {
     if (this.isDraggingOverTheTrashDelay)
       this.figures.shift()
     if (this.isDraggingOverCreateDelay) {
-      if (this.step === 1 && this.type === 'square') {
-        this.detail.colorSquare = this.figures[0].color
-        this.detail.sideSquare = this.figures[0].part
+      if (this.step === 1 && this.type === this.selectedSteps[this.step - 1]) {
+        this.detail.firstColor = this.figures[0].color
+        this.detail.firstPart = this.figures[0].part
         this.figures.shift()
         this.changeStep(2)
-      } else if (this.step === 2 && this.type === 'circle') {
-        if (this.detail.sideSquare > this.figures[0].part * 2) {
-          this.detail.colorCircle = this.figures[0].color
-          this.detail.radius = this.figures[0].part
+      } else if (this.step === 2 && this.type === this.selectedSteps[this.step - 1]) {
+        if (this.detail.firstPart > this.figures[0].part) {
+          this.detail.secondColor = this.figures[0].color
+          this.detail.secondPart = this.figures[0].part
           this.figures.shift()
           this.changeStep(3)
         } else {
           this.openSnackCreateError()
         }
-      } else if (this.step === 3 && this.type === 'triangle') {
-        if (this.detail.radius * 2 > this.figures[0].part + (this.figures[0].part / 100 * 14)) {
-          this.detail.colorTriangle = this.figures[0].color
-          this.detail.sideTriangle = this.figures[0].part
+      } else if (this.step === 3 && this.type === this.selectedSteps[this.step - 1]) {
+        if (this.detail.secondPart > this.figures[0].part) {
+          this.detail.thirdColor = this.figures[0].color
+          this.detail.thirdPart = this.figures[0].part
           this.figures.shift()
           this.changeStep(4)
         } else {

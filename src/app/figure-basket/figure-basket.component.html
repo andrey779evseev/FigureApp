@@ -8,19 +8,31 @@
     (dragend)="figureDragEnded()"
     *ngIf="figures[0]"
   >
-    <div *ngIf="type === 'triangle'">
+    <div *ngIf="type === 'triangle'"
+         matTooltip="side: {{figures[0].part}}"
+         matTooltipPosition="above"
+         matTooltipShowDelay="300"
+    >
       <app-triangle
         [color]="figures[0].color"
         [part]="figures[0].part"
       ></app-triangle>
     </div>
-    <div *ngIf="type === 'square'">
+    <div *ngIf="type === 'square'"
+         matTooltip="side: {{figures[0].part}}"
+         matTooltipPosition="above"
+         matTooltipShowDelay="300"
+    >
       <app-square
         [color]="figures[0].color"
         [part]="figures[0].part"
       ></app-square>
     </div>
-    <div *ngIf="type === 'circle'">
+    <div *ngIf="type === 'circle'"
+         matTooltip="radius: {{figures[0].part/2}}"
+         matTooltipPosition="above"
+         matTooltipShowDelay="300"
+    >
       <app-circle
         [color]="figures[0].color"
         [part]="figures[0].part"

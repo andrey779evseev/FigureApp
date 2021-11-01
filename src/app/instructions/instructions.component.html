@@ -1,0 +1,30 @@
+<div class="text-center mt-2 font-light h-1/5">
+  Вам необходимо собрать фигуру в следующей последовательности :
+  <span [class.text-red-600]="step === 1"> --> </span>
+  <mat-form-field appearance="legacy">
+    <mat-label>Выбирите фигуру</mat-label>
+    <mat-select [(value)]="selectedSteps[0]">
+      <mat-option value="square">Квадрат</mat-option>
+      <mat-option value="circle">Круг</mat-option>
+      <mat-option value="triangle">Треугольник</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <span [class.text-red-600]="step === 2"> --> </span>
+  <mat-form-field appearance="legacy">
+    <mat-label>Выбирите фигуру</mat-label>
+    <mat-select [(value)]="selectedSteps[1]">
+      <mat-option value="square">Квадрат</mat-option>
+      <mat-option value="circle">Круг</mat-option>
+      <mat-option value="triangle">Треугольник</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <span [class.text-red-600]="step === 3"> --> </span>
+  <mat-form-field appearance="legacy">
+    <mat-label>Выбирите фигуру</mat-label>
+    <mat-select [(value)]="selectedSteps[2]">
+      <mat-option value="square">Квадрат</mat-option>
+      <mat-option value="circle">Круг</mat-option>
+      <mat-option value="triangle">Треугольник</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

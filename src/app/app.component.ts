@@ -7,12 +7,13 @@ export interface Figure {
 }
 
 export interface Detail {
-  sideSquare: number
-  sideTriangle: number
-  radius: number
-  colorSquare: string
-  colorTriangle: string
-  colorCircle: string
+  firstPart: number
+  secondPart: number
+  thirdPart: number
+  firstColor: string
+  secondColor: string
+  thirdColor: string
+  path: ('circle' | 'square' | 'triangle')[]
 }
 
 
@@ -24,20 +25,22 @@ export class AppComponent {
   constructor() {
   }
 
-  circles: Figure[] = [{part: 99, color: 'red'}]
-  triangles: Figure[] = [{part: 170, color: 'red'}]
+  circles: Figure[] = [{part: 100, color: 'red'}]
+  triangles: Figure[] = [{part: 150, color: 'red'}]
   squares: Figure[] = [{part: 200, color: 'red'}]
   step = 1
   isDraggingOverTheTrash = false
   isDraggingOverCreate = false
   isDraggingOverTrashDelay = false
   isDraggingOverCreateDelay = false
+  selectedSteps: ('circle' | 'square' | 'triangle')[] = ['square', 'triangle', 'circle']
   createdDetails: Detail[] = []
-  detail: Detail = {colorTriangle: '', colorCircle: '', colorSquare: '', sideTriangle: 0, sideSquare: 0, radius: 0}
+  detail: Detail = {firstColor: '', firstPart: 0, secondColor: '', secondPart: 0, thirdColor: '', thirdPart: 0, path: []}
 
   changeStep(value: number) {
     this.step = value
   }
+
 
   changeIsDraggingOverCreate(value: boolean) {
     this.isDraggingOverCreate = value

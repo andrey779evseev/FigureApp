@@ -19,7 +19,8 @@ import { CreateDetailComponent } from './create-detail/create-detail.component';
 import { CreatedDetailComponent } from './created-detail/created-detail.component';
 import { SquareComponent } from './figures/square/square.component';
 import { CircleComponent } from './figures/circle/circle.component';
-import { TriangleComponent } from './figures/triangle/triangle.component'
+import { TriangleComponent } from './figures/triangle/triangle.component';
+import { InstructionsComponent } from './instructions/instructions.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TriangleComponent } from './figures/triangle/triangle.component'
     SquareComponent,
     CircleComponent,
     TriangleComponent,
+    InstructionsComponent,
   ],
     imports: [
         BrowserModule,

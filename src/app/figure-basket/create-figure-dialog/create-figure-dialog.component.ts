@@ -30,6 +30,8 @@ export class CreateFigureDialogComponent implements OnInit {
   }
 
   create(): void {
+    if(this.data.type === 'circle')
+      this.part *= 2
     this.data.figures.push({part: this.part, color: this.color})
     this.dialogRef.close()
   }

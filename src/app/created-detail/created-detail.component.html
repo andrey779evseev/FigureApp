@@ -4,20 +4,46 @@
   (dragstart)="this.isCreatedDetailDragging = true"
   (dragend)="createdDetailDragEnded(i)"
 >
-  <app-square
-    [color]="detail.colorSquare"
-    [part]="detail.sideSquare"
-  ></app-square>
-  <div style="position:absolute; top: 2px;">
-    <app-circle
-      [color]="detail.colorCircle"
-      [part]="detail.radius"
+  <div *ngIf="detail.firstPart"  style="position:absolute;">
+    <app-square *ngIf="detail.path[0] === 'square'"
+                [color]="detail.firstColor"
+                [part]="detail.firstPart"
+    ></app-square>
+    <app-circle *ngIf="detail.path[0] === 'circle'"
+                [part]="detail.firstPart"
+                [color]="detail.firstColor"
     ></app-circle>
+    <app-triangle *ngIf="detail.path[0] === 'triangle'"
+                  [color]="detail.firstColor"
+                  [part]="detail.firstPart"
+    ></app-triangle>
   </div>
-  <div style="position:absolute;top: 3px;">
-    <app-triangle
-      [color]="detail.colorTriangle"
-      [part]="detail.sideTriangle"
+  <div *ngIf="detail.secondPart" style="position:absolute; top: 1px;">
+    <app-square *ngIf="detail.path[1] === 'square'"
+                [color]="detail.secondColor"
+                [part]="detail.secondPart"
+    ></app-square>
+    <app-circle *ngIf="detail.path[1] === 'circle'"
+                [part]="detail.secondPart"
+                [color]="detail.secondColor"
+    ></app-circle>
+    <app-triangle *ngIf="detail.path[1] === 'triangle'"
+                  [color]="detail.secondColor"
+                  [part]="detail.secondPart"
+    ></app-triangle>
+  </div>
+  <div *ngIf="detail.thirdPart" style="position:absolute;top: 2px;">
+    <app-square *ngIf="detail.path[2] === 'square'"
+                [color]="detail.thirdColor"
+                [part]="detail.thirdPart"
+    ></app-square>
+    <app-circle *ngIf="detail.path[2] === 'circle'"
+                [part]="detail.thirdPart"
+                [color]="detail.thirdColor"
+    ></app-circle>
+    <app-triangle *ngIf="detail.path[2] === 'triangle'"
+                  [color]="detail.thirdColor"
+                  [part]="detail.thirdPart"
     ></app-triangle>
   </div>
 </div>
