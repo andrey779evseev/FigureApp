@@ -11,7 +11,6 @@ import {MatInputModule} from '@angular/material/input'
 import {MatButtonModule} from '@angular/material/button'
 import {FormsModule} from '@angular/forms'
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {NgReversePipeModule} from 'angular-pipes';
 
 import { AppComponent } from './app.component';
 import { FigureBasketComponent } from './figure-basket/figure-basket.component'
@@ -46,7 +45,6 @@ import { TriangleComponent } from './figures/triangle/triangle.component'
         MatTooltipModule,
         MatSelectModule,
         MatOptionModule,
-        NgReversePipeModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

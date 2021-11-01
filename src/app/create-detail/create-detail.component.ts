@@ -13,11 +13,13 @@ export class CreateDetailComponent implements OnInit {
 
   @Input() createdDetails: Detail[]
   @Input() detail: Detail
-  @Input() isDraggingOverTheTrash: boolean
+  @Input() isDraggingOverTheTrashDelay: boolean
   @Input() isDraggingOverCreate: boolean
+  @Input() isDraggingOverCreateDelay: boolean
   @Input() step: number
   @Output() changeStepEvent = new EventEmitter<number>()
   @Output() changeIsDraggingOverCreateEvent = new EventEmitter<boolean>()
+  @Output() changeIsDraggingOverCreateDelayEvent = new EventEmitter<boolean>()
 
 
   changeStep(value: number) {
@@ -26,6 +28,10 @@ export class CreateDetailComponent implements OnInit {
 
   changeIsDraggingOverCreate(value: boolean) {
     this.changeIsDraggingOverCreateEvent.emit(value)
+  }
+
+  changeIsDraggingOverCreateDelay(value: boolean) {
+    this.changeIsDraggingOverCreateDelayEvent.emit(value)
   }
 
   clearDetail() {
@@ -52,7 +58,7 @@ export class CreateDetailComponent implements OnInit {
 
   detailDragEnded() {
     this.isDetailDragging = false
-    if(this.isDraggingOverTheTrash)
+    if(this.isDraggingOverTheTrashDelay)
     {
       this.clearDetail()
       this.changeStep(1)
@@ -60,7 +66,9 @@ export class CreateDetailComponent implements OnInit {
   }
 
   dragToCreateLeave() {
-    setTimeout(() => this.changeIsDraggingOverCreate(false), 1000)
+    this.changeIsDraggingOverCreate(false)
+    this.changeIsDraggingOverCreateDelay(true)
+    setTimeout(() => this.changeIsDraggingOverCreateDelay(false), 1000)
   }
 
   ngOnInit(): void {

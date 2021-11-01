@@ -19,7 +19,6 @@ export interface Detail {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   constructor() {
@@ -31,6 +30,8 @@ export class AppComponent {
   step = 1
   isDraggingOverTheTrash = false
   isDraggingOverCreate = false
+  isDraggingOverTrashDelay = false
+  isDraggingOverCreateDelay = false
   createdDetails: Detail[] = []
   detail: Detail = {colorTriangle: '', colorCircle: '', colorSquare: '', sideTriangle: 0, sideSquare: 0, radius: 0}
 
@@ -42,9 +43,13 @@ export class AppComponent {
     this.isDraggingOverCreate = value
   }
 
+  changeIsDraggingOverCreateDelay(value: boolean) {
+    this.isDraggingOverCreateDelay = value
+  }
+
   dragToTrashLeave() {
-    setTimeout(() => {
-      this.isDraggingOverTheTrash = false
-    }, 560)
+    this.isDraggingOverTheTrash = false
+    this.isDraggingOverTrashDelay = true
+    setTimeout(() => this.isDraggingOverTrashDelay = false, 560)
   }
 }

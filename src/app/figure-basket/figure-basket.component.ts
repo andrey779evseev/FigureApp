@@ -16,8 +16,8 @@ export class FigureBasketComponent implements OnInit {
   isFigureDragging = false
 
   @Input() figures: Figure[]
-  @Input() isDraggingOverTheTrash: boolean
-  @Input() isDraggingOverCreate: boolean
+  @Input() isDraggingOverTheTrashDelay: boolean
+  @Input() isDraggingOverCreateDelay: boolean
   @Input() step: number
   @Output() changeStepEvent = new EventEmitter<number>()
   @Input() detail: Detail
@@ -40,9 +40,9 @@ export class FigureBasketComponent implements OnInit {
 
   figureDragEnded() {
     this.isFigureDragging = false
-    if (this.isDraggingOverTheTrash)
+    if (this.isDraggingOverTheTrashDelay)
       this.figures.shift()
-    if (this.isDraggingOverCreate) {
+    if (this.isDraggingOverCreateDelay) {
       if (this.step === 1 && this.type === 'square') {
         this.detail.colorSquare = this.figures[0].color
         this.detail.sideSquare = this.figures[0].part

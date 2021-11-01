@@ -9,8 +9,8 @@
     <app-figure-basket
       [figures]="squares"
       [detail]="detail"
-      [isDraggingOverCreate]="isDraggingOverCreate"
-      [isDraggingOverTheTrash]="isDraggingOverTheTrash"
+      [isDraggingOverCreateDelay]="isDraggingOverCreateDelay"
+      [isDraggingOverTheTrashDelay]="isDraggingOverTrashDelay"
       [step]="step"
       type="square"
       (changeStepEvent)="changeStep($event)"
@@ -18,8 +18,8 @@
     <app-figure-basket
       [figures]="circles"
       [detail]="detail"
-      [isDraggingOverCreate]="isDraggingOverCreate"
-      [isDraggingOverTheTrash]="isDraggingOverTheTrash"
+      [isDraggingOverCreateDelay]="isDraggingOverCreateDelay"
+      [isDraggingOverTheTrashDelay]="isDraggingOverTrashDelay"
       [step]="step"
       type="circle"
       (changeStepEvent)="changeStep($event)"
@@ -27,15 +27,15 @@
     <app-figure-basket
       [figures]="triangles"
       [detail]="detail"
-      [isDraggingOverCreate]="isDraggingOverCreate"
-      [isDraggingOverTheTrash]="isDraggingOverTheTrash"
+      [isDraggingOverCreateDelay]="isDraggingOverCreateDelay"
+      [isDraggingOverTheTrashDelay]="isDraggingOverTrashDelay"
       [step]="step"
       type="triangle"
       (changeStepEvent)="changeStep($event)"
     ></app-figure-basket>
-    <img [class.dragging-trash]="isDraggingOverTheTrash"
-         src="../assets/icons/trash.svg"
-         alt="trash" class="trash"
+    <img [class.-rotate-12]="isDraggingOverTheTrash"
+         src="assets/icons/trash.svg"
+         alt="trash" class="overflow-hidden transition-transform duration-500"
          (dragover)="this.isDraggingOverTheTrash = true"
          (dragleave)="dragToTrashLeave()"
     >
@@ -48,9 +48,11 @@
     <app-create-detail
       (changeStepEvent)="changeStep($event)"
       (changeIsDraggingOverCreateEvent)="changeIsDraggingOverCreate($event)"
+      (changeIsDraggingOverCreateDelayEvent)="changeIsDraggingOverCreateDelay($event)"
       [step]="step"
-      [isDraggingOverTheTrash]="isDraggingOverTheTrash"
+      [isDraggingOverTheTrashDelay]="isDraggingOverTrashDelay"
       [isDraggingOverCreate]="isDraggingOverCreate"
+      [isDraggingOverCreateDelay]="isDraggingOverCreateDelay"
       [detail]="detail"
       [createdDetails]="createdDetails"
     ></app-create-detail>
@@ -61,7 +63,7 @@
       <app-created-detail
         [createdDetails]="createdDetails"
         [detail]="detail"
-        [isDraggingOverTheTrash]="isDraggingOverTheTrash"
+        [isDraggingOverTheTrash]="isDraggingOverTrashDelay"
         [i]="i"
       ></app-created-detail>
     </div>
